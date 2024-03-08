@@ -6,6 +6,8 @@ function Item() {
   const [steamData, setSteamData] = useState([]);
   const [combinedData, setCombinedData] = useState([]);
 
+  let x;
+
   useEffect(() => {
     const fetchData = async () => {
         try {
@@ -46,8 +48,6 @@ function Item() {
     }, [data, steamData]);
 
   return (
-    
-
     <div>
       <table className="table-container">
         <thead>
@@ -64,13 +64,17 @@ function Item() {
           {combinedData.map(item => (
             <tr key={item.id}>
               <td>
-                  <img src={`https://api.steamapis.com/image/item/730/${item.marketHashName}`} style={{ width: '150px', height: 'auto', padding: '0px' }}/>
+                <img src={`https://api.steamapis.com/image/item/730/${item.marketHashName}`} style={{ width: '100px', height: 'auto', padding: '0px' }} />
               </td>
               <td><b>{item.name}</b></td>
               <td>{item.quantity}</td>
-              <td>{item.boughtPrice.replace(".",",")}zł</td>
+              <td>{item.boughtPrice.replace(".", ",")}zł</td>
               <td>{item.lowest_price}</td>
-              <td>{(parseFloat(item.lowest_price) * parseInt(item.quantity)) - (parseFloat(item.boughtPrice) * parseInt(item.quantity))}zł</td>
+              <td>
+                <b>
+                  {(parseFloat(item.lowest_price) * parseInt(item.quantity)) - (parseFloat(item.boughtPrice) * parseInt(item.quantity))}zł
+                </b>
+              </td>
             </tr>
           ))}
         </tbody>
