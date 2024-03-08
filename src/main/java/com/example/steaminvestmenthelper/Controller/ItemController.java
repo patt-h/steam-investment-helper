@@ -2,15 +2,13 @@ package com.example.steaminvestmenthelper.Controller;
 
 import com.example.steaminvestmenthelper.DTO.Item;
 import com.example.steaminvestmenthelper.Repository.ItemRepository;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
 
 @RestController
+@CrossOrigin
 @RequestMapping(value = "/api")
 public class ItemController {
     private final ItemRepository itemRepository;
