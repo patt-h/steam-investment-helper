@@ -26,4 +26,14 @@ public class ItemController {
     public Optional<Item> getItemById(@PathVariable(value = "id") String id) {
         return itemRepository.findById(id);
     }
+
+    @PostMapping(value = "/addItem")
+    public Item addItem(@RequestBody Item item) {
+        return itemRepository.save(item);
+    }
+
+    @DeleteMapping(value = "/delete/{id}")
+    public void deleteItem(@PathVariable(value = "id") String id) {
+        itemRepository.deleteById(id);
+    }
 }

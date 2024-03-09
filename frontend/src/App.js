@@ -6,7 +6,9 @@ function App() {
     <><div className="topbar">
       <div className="buttons">
         <button>Main Page</button>
-        <button>Market</button>
+        <a href="https://steamcommunity.com/market/search?appid=730" target="_blank">
+        <button>Steam Market</button>
+        </a>
         <button>About</button>
       </div>
     </div>
