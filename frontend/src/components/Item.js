@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import fetchData from './fetchData';
+//import AddItem from './AddItem';
 import './table.css';
 
 function Item() {
@@ -9,16 +10,17 @@ function Item() {
     const fetchDataAndProcess = async () => {
       const jsonData = await fetchData();
       setData(jsonData);
-      jsonData.forEach(item => {
-        const itemContainer = document.getElementById(`itemContainer${item.id}`);
-        if (itemContainer) {
+
+      setTimeout(function() {
+        jsonData.forEach(item => {
+          const itemContainer = document.getElementById(`itemContainer${item.id}`);
           const itemDiv = document.createElement('div');
           itemDiv.classList.add('item');
 
           const deleteIcon = document.createElement('span');
           deleteIcon.classList.add('material-symbols-outlined');
-          deleteIcon.classList.add('delete-icon')
-          deleteIcon.classList.add('top-right')
+          deleteIcon.classList.add('delete-icon');
+          deleteIcon.classList.add('top-right');
           deleteIcon.textContent = "close";
           deleteIcon.style.display = "none";
 
@@ -35,7 +37,7 @@ function Item() {
           historyIcon.classList.add('top-left');
           historyIcon.textContent = "history";
           historyIcon.style.display = "none";
-            
+              
           itemContainer.addEventListener('mouseenter', () => {
             deleteIcon.style.display = 'inline';
             editIcon.style.display = 'inline';
@@ -52,8 +54,8 @@ function Item() {
           itemDiv.appendChild(editIcon);
           itemDiv.appendChild(historyIcon);
           itemContainer.appendChild(itemDiv);
-        }
-      });
+        });
+      }, 1);
     };
       
     fetchDataAndProcess();
@@ -90,11 +92,11 @@ function Item() {
               <td><b>{item.name}</b></td>
               <td>{item.quantity}</td>
               <td>{item.boughtPrice}zł</td>
-              <td>{item.lowest_price}</td>
-              <td style={{backgroundColor: isNaN(parseFloat(item.lowest_price)) ? "gray" : item.boughtPrice > item.lowest_price ? "#e93030" : "#4abf26"}}>
+              <td>{sessionStorage.getItem(item.marketHashName)}</td>
+              <td style={{backgroundColor: isNaN(parseFloat(sessionStorage.getItem(item.marketHashName))) ? "gray" : item.boughtPrice > parseFloat(sessionStorage.getItem(item.marketHashName)) ? "#e93030" : "#4abf26"}}>
                 <b>
                   <span className="profit">
-                  {(parseFloat(item.lowest_price) * parseInt(item.quantity)) - (parseFloat(item.boughtPrice) * parseInt(item.quantity))}zł
+                  {(parseFloat(sessionStorage.getItem(item.marketHashName)) * parseInt(item.quantity)) - (parseFloat(item.boughtPrice) * parseInt(item.quantity))}zł
                   </span>
                 </b>
               </td>
