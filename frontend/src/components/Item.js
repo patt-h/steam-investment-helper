@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import fetchData from './fetchData';
-//import AddItem from './AddItem';
+import AddItem from './AddItem';
 import './table.css';
 
 function Item() {
   const [data, setData] = useState([]);
+  const [openModal, setOpenModal] = useState(false);
 
   useEffect(() => {
     const fetchDataAndProcess = async () => {
@@ -66,11 +67,12 @@ function Item() {
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 
     <div>
+    <AddItem open={openModal} onClose={() => setOpenModal(false)} />
       <table className="table-container">
         <thead>
           <tr>
             <th>
-              <button className="add-button" title="Add new item">
+              <button className="add-button" title="Add new item" onClick={() => setOpenModal(true)}>
                 <span className="material-symbols-outlined">
                   <b>add</b>
                 </span>
@@ -96,7 +98,7 @@ function Item() {
               <td style={{backgroundColor: isNaN(parseFloat(sessionStorage.getItem(item.marketHashName))) ? "gray" : item.boughtPrice > parseFloat(sessionStorage.getItem(item.marketHashName)) ? "#e93030" : "#4abf26"}}>
                 <b>
                   <span className="profit">
-                  {(parseFloat(sessionStorage.getItem(item.marketHashName)) * parseInt(item.quantity)) - (parseFloat(item.boughtPrice) * parseInt(item.quantity))}zł
+                  {(parseFloat(sessionStorage.getItem(item.marketHashName)) * parseInt(item.quantity)).toFixed(2) - (parseFloat(item.boughtPrice) * parseInt(item.quantity)).toFixed(2)}zł
                   </span>
                 </b>
               </td>
