@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import fetchData from './fetchData';
+import FetchData from './FetchData';
 import AddItem from './AddItem';
 import './table.css';
 
@@ -9,7 +9,7 @@ function Item() {
 
   useEffect(() => {
     const fetchDataAndProcess = async () => {
-      const jsonData = await fetchData();
+      const jsonData = await FetchData();
       setData(jsonData);
 
       setTimeout(function() {
