@@ -1,11 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import FetchData from './FetchData';
 import AddItem from './AddItem';
+import DeleteItem from './DeleteItem';
 import './table.css';
 
 function Item() {
   const [data, setData] = useState([]);
   const [openModal, setOpenModal] = useState(false);
+  const [openDeleteModal, setOpenDeleteModal] = useState(false);
+  const [selectedItemId, setSelectedItemId] = useState(null);
+  const [selectedItemName, setSelectedItemName] = useState(null);
+  const totalRef = useRef(null);
+  const totalCell = useRef(null);
 
   useEffect(() => {
     const fetchDataAndProcess = async () => {
@@ -22,6 +28,7 @@ function Item() {
           deleteIcon.classList.add('material-symbols-outlined');
           deleteIcon.classList.add('delete-icon');
           deleteIcon.classList.add('top-right');
+          deleteIcon.title = "Remove this item";
           deleteIcon.textContent = "close";
           deleteIcon.style.display = "none";
 
@@ -29,6 +36,7 @@ function Item() {
           editIcon.classList.add('material-symbols-outlined');
           editIcon.classList.add('edit-icon');
           editIcon.classList.add('bottom-right');
+          editIcon.title = "Edit parameters of this item"
           editIcon.textContent = "edit";            
           editIcon.style.display = "none";
 
@@ -36,6 +44,7 @@ function Item() {
           historyIcon.classList.add('material-symbols-outlined');
           historyIcon.classList.add('history-icon');
           historyIcon.classList.add('top-left');
+          historyIcon.title ="Check registered price history"
           historyIcon.textContent = "history";
           historyIcon.style.display = "none";
               
@@ -51,6 +60,12 @@ function Item() {
             historyIcon.style.display = 'none';
           })
 
+          deleteIcon.addEventListener('click', () => {
+            setOpenDeleteModal(true);
+            setSelectedItemId(item.id);
+            setSelectedItemName(item.name);
+          })
+
           itemDiv.appendChild(deleteIcon);
           itemDiv.appendChild(editIcon);
           itemDiv.appendChild(historyIcon);
@@ -62,13 +77,38 @@ function Item() {
     fetchDataAndProcess();
   }, []);
 
+  const sumColumn = () => {
+    const table = document.getElementById("investments-table");
+    
+    if (!table) {
+      return;
+    }
+
+    let total = 0;
+    for (let i = 1; i < table.rows.length; i++) {
+      const cell = table.rows[i].cells[5];
+      if (cell && cell.textContent) {
+        total += parseFloat(cell.textContent);
+      }
+    }
+
+    totalRef.current.textContent = total.toFixed(2);
+    totalRef.current.textContent = `${total >= 0 ? '+' : '-'}${Math.abs(total).toFixed(2)}zł`;
+    totalCell.current.style.backgroundColor = total > 0 ? 'green' : total < 0 ? 'red' : 'black';
+  }
+
+  useEffect(() => {
+    sumColumn();
+  }, [data]);
+
   return (
     <>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 
     <div>
-    <AddItem open={openModal} onClose={() => setOpenModal(false)} />
-      <table className="table-container">
+    <AddItem open={openModal} onClose={() => setOpenModal(false)}/>
+    <DeleteItem open={openDeleteModal} onClose={() => setOpenDeleteModal(false)} itemId={selectedItemId} itemName={selectedItemName}/>
+      <table className="table-container" id="investments-table">
         <thead>
           <tr>
             <th>
@@ -104,6 +144,15 @@ function Item() {
               </td>
             </tr>
           ))}
+          <tr>
+           <td colSpan="5" className="total-row">Total</td>
+           <td ref={totalCell}>
+              <b>
+                <span ref={totalRef} className="total">
+                </span>
+              </b>
+           </td>
+          </tr>
         </tbody>
       </table>
     </div>

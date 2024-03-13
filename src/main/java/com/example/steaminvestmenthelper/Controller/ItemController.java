@@ -28,8 +28,8 @@ public class ItemController {
     }
 
     @PostMapping(value = "/addItem")
-    public Item addItem(@RequestBody Item item) {
-        return itemRepository.save(item);
+    public List<Item> addItem(@RequestBody List<Item> item) {
+        return itemRepository.saveAll(item);
     }
 
     @DeleteMapping(value = "/delete/{id}")

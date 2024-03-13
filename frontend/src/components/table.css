@@ -1,7 +1,7 @@
 .table-container {
     border-collapse: collapse;
     width: 70%;
-    margin: 20px auto 0;
+    margin: 20px auto 20px;
   }
   
 .table-container th, .table-container td {
@@ -64,7 +64,11 @@
   right: -10px;
 }
 
-.profit {
+.profit, .total, .total-row {
   color: white;
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+.total-row {
+  background-color: #555;
 }
