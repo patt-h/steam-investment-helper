@@ -6,7 +6,6 @@
     max-height: 200px;
     overflow-y: auto;
     overflow-x: hidden;
-    transition: all 10s ease-out;
 }
 
 .add-table-container th, .add-table-container td {
@@ -25,7 +24,7 @@
 
 .modal-container {
     justify-content: center;
-    max-width: 850px;
+    max-width: 900px;
     width: 100%;
     position: fixed;
     top: 40%;
@@ -41,10 +40,6 @@
     top: -10px;
     right: 10px;
     cursor: pointer;
-}
-
-.modal-content {
-    padding: 1rem 1rem;
 }
 
 .button-container {
@@ -63,12 +58,12 @@
 }
 
 .submit-button {
-    background-color: #555;
+    background-color: rgba(74, 191, 38, 0.9);
     cursor: pointer;
 }
 
 .submit-button:hover {
-    background-color: #777;
+    background-color: rgba(74, 191, 38, 0.7);
 }
 
 .add-row {

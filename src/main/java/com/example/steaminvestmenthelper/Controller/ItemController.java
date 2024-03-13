@@ -2,6 +2,7 @@ package com.example.steaminvestmenthelper.Controller;
 
 import com.example.steaminvestmenthelper.DTO.Item;
 import com.example.steaminvestmenthelper.Repository.ItemRepository;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -30,6 +31,11 @@ public class ItemController {
     @PostMapping(value = "/addItem")
     public List<Item> addItem(@RequestBody List<Item> item) {
         return itemRepository.saveAll(item);
+    }
+
+    @PutMapping(value = "/update")
+    public Item updateItem(@RequestBody Item item) {
+        return itemRepository.save(item);
     }
 
     @DeleteMapping(value = "/delete/{id}")

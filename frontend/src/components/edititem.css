@@ -1,0 +1,36 @@
+.edit-modal-container {
+    justify-content: center;
+    max-width: 750px;
+    width: 70%;
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    background-color: #ffffff;
+    box-shadow: 0px 0px 18px 0px rgba(0, 0, 0, 0.75);
+}
+
+.edit-table-container {
+    display: block;
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 10px;
+    max-height: 200px;
+}
+
+
+.edit-table-container th, .edit-table-container td {
+    border: 2px solid #dddddd;
+    text-align: center;
+    padding: 8px;
+}
+
+.edit-button {
+    background-color: rgba(38, 83, 207, 0.9);
+    cursor: pointer;
+}
+
+.edit-button:hover {
+    background-color: rgba(38, 83, 207, 0.7);
+}

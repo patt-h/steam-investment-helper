@@ -1,0 +1,29 @@
+.bottombar {
+    background-color: #333;
+    color: #777;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.github-image {
+    height: 20px;
+    width: auto;
+    position: relative;
+    top: 4px;
+    margin-left: 4px;
+    margin-right: 4px;
+}
+
+a {
+    color: #777;
+}
+
+.bottombar-text {
+    position: relative;
+    text-align: center;
+}
+
+.clause {
+    font-size: 0.8em;
+}

@@ -9,5 +9,4 @@ public class SteamInvestmentHelperApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(SteamInvestmentHelperApplication.class, args);
 	}
-
 }

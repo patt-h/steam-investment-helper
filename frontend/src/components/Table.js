@@ -3,13 +3,18 @@ import FetchData from './FetchData';
 import AddItem from './AddItem';
 import DeleteItem from './DeleteItem';
 import './table.css';
+import EditItem from './EditItem';
 
-function Item() {
+function Table() {
   const [data, setData] = useState([]);
   const [openModal, setOpenModal] = useState(false);
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
+  const [openEditModal, setOpenEditModal] = useState(false);
   const [selectedItemId, setSelectedItemId] = useState(null);
   const [selectedItemName, setSelectedItemName] = useState(null);
+  const [selectedItemMarketHashName, setSelectedItemMarketHashName] = useState(null);
+  const [selectedBoughtPrice, setSelectedBoughtPrice] = useState(null);
+  const [selectedQuantity, setSelectedQuantity] = useState(null);
   const totalRef = useRef(null);
   const totalCell = useRef(null);
 
@@ -60,6 +65,15 @@ function Item() {
             historyIcon.style.display = 'none';
           })
 
+          editIcon.addEventListener('click', () => {
+            setOpenEditModal(true);
+            setSelectedItemId(item.id);
+            setSelectedItemName(item.name);
+            setSelectedItemMarketHashName(item.marketHashName);
+            setSelectedBoughtPrice(item.boughtPrice);
+            setSelectedQuantity(item.quantity);
+          })
+
           deleteIcon.addEventListener('click', () => {
             setOpenDeleteModal(true);
             setSelectedItemId(item.id);
@@ -106,8 +120,9 @@ function Item() {
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 
     <div>
-    <AddItem open={openModal} onClose={() => setOpenModal(false)}/>
-    <DeleteItem open={openDeleteModal} onClose={() => setOpenDeleteModal(false)} itemId={selectedItemId} itemName={selectedItemName}/>
+      <AddItem open={openModal} onClose={() => setOpenModal(false)}/>
+      <DeleteItem open={openDeleteModal} onClose={() => setOpenDeleteModal(false)} itemId={selectedItemId} itemName={selectedItemName}/>
+      <EditItem open={openEditModal} onClose={() => setOpenEditModal(false)} itemId={selectedItemId} itemName={selectedItemName} itemMarketHashName={selectedItemMarketHashName} itemBoughtPrice={selectedBoughtPrice} itemQuantity={selectedQuantity} />
       <table className="table-container" id="investments-table">
         <thead>
           <tr>
@@ -138,7 +153,7 @@ function Item() {
               <td style={{backgroundColor: isNaN(parseFloat(sessionStorage.getItem(item.marketHashName))) ? "gray" : item.boughtPrice > parseFloat(sessionStorage.getItem(item.marketHashName)) ? "#e93030" : "#4abf26"}}>
                 <b>
                   <span className="profit">
-                  {(parseFloat(sessionStorage.getItem(item.marketHashName)) * parseInt(item.quantity)).toFixed(2) - (parseFloat(item.boughtPrice) * parseInt(item.quantity)).toFixed(2)}zł
+                  {((parseFloat(sessionStorage.getItem(item.marketHashName)) * parseInt(item.quantity)) - (parseFloat(item.boughtPrice) * parseInt(item.quantity))).toFixed(2)}zł
                   </span>
                 </b>
               </td>
@@ -160,4 +175,4 @@ function Item() {
   );
 };
 
-export default Item;
+export default Table;

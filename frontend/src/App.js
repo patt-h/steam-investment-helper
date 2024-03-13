@@ -6,15 +6,17 @@ import {
 
 import './App.css';
 import TopBar from './components/TopBar'
-import Item from './components/Item'
+import Table from './components/Table'
+import BottomBar from "./components/BottomBar";
 
 function App() {
   return (
     <Router>
       <TopBar />
       <Routes>
-        <Route exact path="/" element={<Item />} />
+        <Route exact path="/" element={<Table />} />
       </Routes>
+      <BottomBar />
     </Router>
   );
 }

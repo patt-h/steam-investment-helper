@@ -26,7 +26,7 @@ const DeleteItem = ({open, onClose, itemId, itemName}) => {
 
     return (
         <div className="overlay">
-            <div className="modal-container">
+            <div className="delete-modal-container">
                 <div className="modal-content">
                     <h1>Are you sure you want to remove this item?</h1>
                     <h2>{itemName}</h2>
