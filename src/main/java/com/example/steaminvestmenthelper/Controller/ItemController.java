@@ -1,8 +1,8 @@
 package com.example.steaminvestmenthelper.Controller;
 
 import com.example.steaminvestmenthelper.DTO.Item;
+import com.example.steaminvestmenthelper.Repository.ItemHistoryRepository;
 import com.example.steaminvestmenthelper.Repository.ItemRepository;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,9 +13,11 @@ import java.util.Optional;
 @RequestMapping(value = "/api")
 public class ItemController {
     private final ItemRepository itemRepository;
+    private final ItemHistoryRepository itemHistoryRepository;
 
-    public ItemController(ItemRepository itemRepository) {
+    public ItemController(ItemRepository itemRepository, ItemHistoryRepository itemHistoryRepository) {
         this.itemRepository = itemRepository;
+        this.itemHistoryRepository = itemHistoryRepository;
     }
 
     @GetMapping(value = "/all")
@@ -40,6 +42,7 @@ public class ItemController {
 
     @DeleteMapping(value = "/delete/{id}")
     public void deleteItem(@PathVariable(value = "id") String id) {
+        itemHistoryRepository.deleteByItemID(id);
         itemRepository.deleteById(id);
     }
 }

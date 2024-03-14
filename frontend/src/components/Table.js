@@ -1,15 +1,17 @@
 import React, { useState, useEffect, useRef } from 'react';
 import FetchData from './FetchData';
 import AddItem from './AddItem';
-import DeleteItem from './DeleteItem';
-import './table.css';
 import EditItem from './EditItem';
+import DeleteItem from './DeleteItem';
+import ItemHistory from './ItemHistory';
+import './table.css';
 
 function Table() {
   const [data, setData] = useState([]);
   const [openModal, setOpenModal] = useState(false);
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
   const [openEditModal, setOpenEditModal] = useState(false);
+  const [openHistoryModal, setOpenHistoryModal] = useState(false);
   const [selectedItemId, setSelectedItemId] = useState(null);
   const [selectedItemName, setSelectedItemName] = useState(null);
   const [selectedItemMarketHashName, setSelectedItemMarketHashName] = useState(null);
@@ -80,6 +82,12 @@ function Table() {
             setSelectedItemName(item.name);
           })
 
+          historyIcon.addEventListener('click', () => {
+            setOpenHistoryModal(true);
+            setSelectedItemMarketHashName(item.marketHashName);
+            setSelectedItemId(item.id)
+          })
+
           itemDiv.appendChild(deleteIcon);
           itemDiv.appendChild(editIcon);
           itemDiv.appendChild(historyIcon);
@@ -122,7 +130,8 @@ function Table() {
     <div>
       <AddItem open={openModal} onClose={() => setOpenModal(false)}/>
       <DeleteItem open={openDeleteModal} onClose={() => setOpenDeleteModal(false)} itemId={selectedItemId} itemName={selectedItemName}/>
-      <EditItem open={openEditModal} onClose={() => setOpenEditModal(false)} itemId={selectedItemId} itemName={selectedItemName} itemMarketHashName={selectedItemMarketHashName} itemBoughtPrice={selectedBoughtPrice} itemQuantity={selectedQuantity} />
+      <EditItem open={openEditModal} onClose={() => setOpenEditModal(false)} itemId={selectedItemId} itemName={selectedItemName} itemMarketHashName={selectedItemMarketHashName} itemBoughtPrice={selectedBoughtPrice} itemQuantity={selectedQuantity}/>
+      <ItemHistory open={openHistoryModal} onClose={() => setOpenHistoryModal(false)} itemMarketHashName={selectedItemMarketHashName} itemId={selectedItemId} data={data}/>
       <table className="table-container" id="investments-table">
         <thead>
           <tr>
