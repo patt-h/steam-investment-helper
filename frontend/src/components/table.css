@@ -2,19 +2,25 @@
     border-collapse: collapse;
     width: 70%;
     margin: 20px auto 20px;
+    color: rgba(255, 255, 255, 0.8);
+    background-color: #333;
   }
   
 .table-container th, .table-container td {
-    border: 2px solid #dddddd;
+    border: 2px solid rgba(0, 0, 0, 0.8);
     text-align: center;
     padding: 8px;
 }
 
 .add-button {
-  background-color: green;
+  background-color: rgba(74, 191, 38, 0.9);
   color: white;
   cursor: pointer;
   border-radius: 5px;
+}
+
+.add-button:hover {
+  background-color: rgba(74, 191, 38, 0.7);
 }
 
 .item {
@@ -35,7 +41,7 @@
   height: 30px;
   position: absolute;
   cursor: pointer;
-  color: rgb(20, 19, 19);
+  color: rgba(255, 255, 255, 0.8);
   user-select: none;
 }
 
@@ -45,7 +51,7 @@
   font-size: 60px;
   position: absolute;
   cursor: pointer;
-  color: rgb(20, 19, 19);
+  color: rgba(255, 255, 255, 0.8);
   user-select: none;
 }
 

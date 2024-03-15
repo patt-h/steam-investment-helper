@@ -1,15 +1,19 @@
+import './topbar.css'
+
 const TopBar = () => {
     return (
     <div className="topbar">
-      <div className="buttons">
+      <ul className="nav-topbar">
         <a href="http://localhost:3000/">
-        <button>Main Page</button>
+        <li>Main Page</li>
         </a>
         <a href="https://steamcommunity.com/market/search?appid=730" target="_blank">
-        <button>Steam Market</button>
+        <li>Steam Market</li>
         </a>
-        <button>About</button>
-      </div>
+        <a href="http://localhost:3000/about">
+        <li>About</li>
+        </a>
+      </ul>
     </div>
     )
 }

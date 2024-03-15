@@ -4,19 +4,18 @@ import {
   Route
 } from "react-router-dom";
 
-import './App.css';
-import TopBar from './components/TopBar'
+import MainPage from "./components/MainPage";
 import Table from './components/Table'
-import BottomBar from "./components/BottomBar";
+import AboutPage from './components/AboutPage'
 
 function App() {
   return (
     <Router>
-      <TopBar />
       <Routes>
-        <Route exact path="/" element={<Table />} />
+        <Route exact path="/" element={<MainPage/>}  />
+        <Route exact path="/investments" element={<Table />} />
+        <Route exact path="/about" element={<AboutPage />} />
       </Routes>
-      <BottomBar />
     </Router>
   );
 }

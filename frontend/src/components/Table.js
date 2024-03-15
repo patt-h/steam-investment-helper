@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
+import TopBar from './TopBar';
+import BottomBar from './BottomBar';
 import DataFetch from './DataFetch';
 import AddItem from './AddItem';
 import EditItem from './EditItem';
@@ -126,7 +128,7 @@ function Table() {
   return (
     <>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-
+    <TopBar />
     <div>
       <AddItem open={openModal} onClose={() => setOpenModal(false)}/>
       <DeleteItem open={openDeleteModal} onClose={() => setOpenDeleteModal(false)} itemId={selectedItemId} itemName={selectedItemName}/>
@@ -180,6 +182,7 @@ function Table() {
         </tbody>
       </table>
     </div>
+    <BottomBar />
     </>
   );
 };

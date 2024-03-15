@@ -1,0 +1,125 @@
+.about-header {
+    color: white;
+    position: fixed;
+    left: 120px;
+    margin-top: 30px;
+    font-size: 42px;
+    font-weight: 500;
+}
+
+.header-container, .react-container, .spring-container, .text-container {
+    opacity: 0;
+}
+
+.spring-text {
+    color: white;
+    font-family: Outfit;
+    font-size: 62px;
+    position: relative;
+    top: -45px;
+    left: 550px;
+    max-width: 400px;
+}
+
+.react-text {
+    color: white;
+    font-family: Outfit;
+    font-size: 62px;
+    position: relative;
+    top: -45px;
+    left: 230px;
+    max-width: 400px;
+}
+
+.spring-logo {
+    height: 300px;
+    width: auto;
+    position: relative;
+    top: 150px;
+    left: 170px;
+}
+
+.react-logo {
+    height: 300px;
+    width: auto;
+    position: relative;
+    top: 150px;
+    left: 480px;
+}
+
+.github-image-about {
+    height: 25px;
+    width: auto;
+    position: relative;
+    top: 6px;
+    margin-left: 0px;
+    margin-right: 10px;
+}
+
+.steam-image-about {
+    height: 25px;
+    width: auto;
+    position: relative;
+    top: 6px;
+    margin-left: 0px;
+    margin-right: 10px;
+}
+
+.about-links {
+    list-style: none;
+    font-size: 18px;
+    font-family: Outfit;
+}
+
+.about-links a {
+    margin-left: -40px;
+    border-radius: 50px;
+    padding: 10px 20px;
+    color: inherit;
+    text-decoration: none;
+    background-color: rgb(68, 68, 68, 0.9);
+}
+
+.about-links a:hover {
+    background-color: rgba(68, 68, 68, 0.5);
+    transition: 0.3s;
+}
+
+.about-links a:not(:hover) {
+    transition: 0.3s;
+}
+
+.text-content {
+    position: absolute;
+    top: 170px;
+    right: 150px;
+    width: 600px;
+    height: 700px;
+    border-radius: 30px;
+    background-color: #222;
+    box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.75);
+    color: white;
+    display: flex;
+}
+
+.text-about {
+    font-size: 20px;
+    margin: 20px 40px;
+}
+
+.text-about h1 {
+    font-size: 30px;
+}
+
+.header-fade-enter, .spring-fade-enter, .react-fade-enter, .text-fade-enter  {
+    opacity: 0;
+}
+  
+.header-fade-enter-active, .spring-fade-enter-active, .react-fade-enter-active, .text-fade-enter-active  {
+    opacity: 1;
+    transition: opacity 1500ms ease;
+}
+
+.header-fade-enter-done, .spring-fade-enter-done, .react-fade-enter-done, .text-fade-enter-done {
+    opacity: 1;
+}

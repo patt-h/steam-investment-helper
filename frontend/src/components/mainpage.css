@@ -1,0 +1,88 @@
+.triangle-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.triangle {
+    position: relative;
+    width: 0;
+    height: 0;
+    border-top: 100vh solid rgb(42, 42, 42);
+    border-right: 100vw solid transparent;
+}
+
+.main-logo {
+    opacity: 0;
+    height: 450px;
+    width: auto;
+    position: relative;
+    margin-left: 120px;
+}
+
+.welcome-container {
+    opacity: 0;
+    position: absolute;
+    font-family: Outfit;
+    color: white;
+    top: 500px;
+    right: 75px;
+    max-width: 700px;
+    font-size: 32px;
+}
+
+.welcome-button {
+    display: block;
+    font-family: Outfit;
+    font-size: 24px;
+    margin: 24px auto;
+    border-radius: 50px;
+    padding: 10px 38px;
+    border: 2px solid black;
+    background-color: rgba(74, 191, 38, 0.9);
+    cursor: pointer;
+}
+
+.welcome-button:hover {
+    transition: 0.6s;
+    background-color: rgba(74, 191, 38, 0.7);
+}
+
+.welcome-button:not(:hover) {
+    transition: 0.6s;
+}
+
+.logo-fade-enter {
+    opacity: 0;
+}
+  
+.logo-fade-enter-active {
+    opacity: 1;
+    transition: opacity 1500ms ease;
+}
+
+.logo-fade-enter-done {
+    opacity: 1;
+}
+
+.welcome-container-enter {
+    opacity: 0;
+}
+
+.welcome-container-enter-active {
+    opacity: 1;
+    transition: opacity 1500ms ease;
+}
+
+.welcome-container-enter-done {
+    opacity: 1;
+}
+
+.welcome-container a {
+    color: inherit;
+    text-decoration: none;
+}
