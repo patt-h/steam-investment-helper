@@ -15,7 +15,7 @@
 - MySQL
 
 ## Setup
-
+Run `docker-compose up -d --build` to start applications
 
 ## How app looks
 If apps (<b>remember that Spring App, React App and MySQL database must be running</b>) has started successfully, it should be available at `localhost:3000`
