@@ -7,15 +7,24 @@
 * [How app looks](#how-app-looks)
 
 ## Introduction
+### A simple project to automatically track current prices and profits - Excel is no longer needed!
+Click add button, enter item details such as name, bought price, quantity and link to item on Steam Market and thats all - current price will be tracked untill you delete it.
+In order to protect against too many requests to the Steam Market API, current prices are saved in session storage and app will send new requests only if you close previous session.
 
+You can edit item's details or delete an item in any time. To check registered price history of each item, click on clock icon. At the end of the table, there is total profit cell that shows how much money you've made with all your investments.
 
 ## Built with
-- Java / Spring Boot
-- JavaScript / React
+- Spring
+- React
 - MySQL
 
 ## Setup
+### Using Docker
 Run `docker-compose up -d --build` to start applications
+### Without Docker
+1. Create database in MySQL using `CREATE DATABASE steam-investment` and execute two SQL scripts from sql folder
+2. Run Spring Boot application using `javac SteamInvestmentHelperApplication.java` <b>(Java 17 required)</b>
+3. Run React application using `npm install` and then `npm start`
 
 ## How app looks
 If apps (<b>remember that Spring App, React App and MySQL database must be running</b>) has started successfully, it should be available at `localhost:3000`
